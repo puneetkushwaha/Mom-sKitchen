@@ -25,7 +25,7 @@ const AdminDashboard = () => {
     useEffect(() => {
         fetchStats();
 
-        const socket = io(import.meta.env.VITE_SOCKET_URL || 'http://localhost:5000');
+        const socket = io(import.meta.env.VITE_SOCKET_URL || 'https://mom-skitchen-backend.onrender.com');
         socket.on('newOrder', (newOrder) => {
             // Play notification sound
             const audio = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
