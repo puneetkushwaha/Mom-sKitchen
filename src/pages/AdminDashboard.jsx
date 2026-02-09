@@ -26,17 +26,29 @@ const AdminDashboard = () => {
         fetchStats();
 
         const socket = io(import.meta.env.VITE_SOCKET_URL || 'https://mom-skitchen-backend.onrender.com');
-        socket.on('newOrder', (newOrder) => {
-            // Play notification sound
-            const audio = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
-            audio.play().catch(e => console.log('Audio play failed:', e));
 
+        socket.on('connect', () => {
+            console.log('[AdminDashboard] Connected to Socket.io server:', socket.id);
+        });
+
+        socket.on('connect_error', (err) => {
+            console.error('[AdminDashboard] Socket Connection Error:', err);
+        });
+
+        socket.on('newOrder', (newOrder) => {
+            console.log('[AdminDashboard] New Order Event Received:', newOrder);
+            playNotificationSound();
             alert(`New Order Received! #${newOrder._id.slice(-6).toUpperCase()}`);
             fetchStats();
         });
 
         return () => socket.disconnect();
     }, []);
+
+    const playNotificationSound = () => {
+        const audio = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
+        audio.play().catch(e => console.error('Audio play failed (check browser permissions):', e));
+    };
 
     const fetchStats = async () => {
         try {
@@ -67,6 +79,12 @@ const AdminDashboard = () => {
                 <div className="p-6 bg-secondary text-white rounded-3xl mb-8">
                     <p className="text-gray-400 text-sm">Welcome back,</p>
                     <h2 className="font-bold text-xl">Kitchen Owner</h2>
+                    <button
+                        onClick={() => playNotificationSound()}
+                        className="text-xs bg-white/20 hover:bg-white/30 px-2 py-1 rounded mt-2 w-full text-left flex items-center gap-2"
+                    >
+                        🔊 Test Sound
+                    </button>
                 </div>
 
                 <div className="space-y-2">
