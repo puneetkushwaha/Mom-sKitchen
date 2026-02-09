@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- Background Circle -->
+  <circle cx="50" cy="50" r="48" fill="#F97316" stroke="white" stroke-width="2"/>
+  
+  <!-- Chef Hat -->
+  <g transform="translate(50, 50)">
+    <!-- Hat Base -->
+    <rect x="-18" y="8" width="36" height="12" rx="2" fill="white"/>
+    
+    <!-- Hat Top -->
+    <ellipse cx="0" cy="0" rx="20" ry="15" fill="white"/>
+    
+    <!-- Small circles on hat -->
+    <circle cx="-10" cy="-2" r="5" fill="#FFF7ED"/>
+    <circle cx="10" cy="-2" r="5" fill="#FFF7ED"/>
+    <circle cx="0" cy="-8" r="5" fill="#FFF7ED"/>
+  </g>
+  
+  <!-- Heart Accent -->
+  <path d="M 50 65 L 47 62 Q 44 59 44 56 Q 44 53 47 53 Q 50 53 50 56 Q 50 53 53 53 Q 56 53 56 56 Q 56 59 53 62 Z" fill="#EF4444"/>
+</svg>

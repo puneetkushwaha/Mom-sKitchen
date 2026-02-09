@@ -1,0 +1,23 @@
+{
+    "short_name": "CloudKit",
+    "name": "Cloud Kitchen | Premium Food Delivery",
+    "description": "Authentic home-style food at your doorstep.",
+    "icons": [
+        {
+            "src": "https://cdn-icons-png.flaticon.com/512/3595/3595455.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "https://cdn-icons-png.flaticon.com/512/3595/3595455.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "start_url": "/",
+    "display": "standalone",
+    "theme_color": "#ef4444",
+    "background_color": "#ffffff",
+    "orientation": "portrait"
+}
