@@ -17,18 +17,20 @@ const OrderManagement = () => {
     const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
 
     useEffect(() => {
-        fetchOrders();
+        fetchOrders(); // Initial fetch
+        const interval = setInterval(() => fetchOrders(true), 2000); // Auto poll every 2 sec
+        return () => clearInterval(interval);
     }, [selectedDate]);
 
-    const fetchOrders = async () => {
-        setLoading(true);
+    const fetchOrders = async (silent = false) => {
+        if (!silent) setLoading(true);
         try {
             const { data } = await API.get(`/orders?date=${selectedDate}`);
             setOrders(data);
         } catch (err) {
             console.error('Failed to fetch orders', err);
         } finally {
-            setLoading(false);
+            if (!silent) setLoading(false);
         }
     };
 
