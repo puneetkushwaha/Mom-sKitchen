@@ -31,7 +31,7 @@ const OrderTracking = () => {
         // ... (existing socket logic)
 
         // Socket.io integration
-        const socket = io(import.meta.env.VITE_SOCKET_URL || 'http://localhost:5000');
+        const socket = io(import.meta.env.VITE_SOCKET_URL || 'https://mom-skitchen-backend.onrender.com');
 
         socket.on('connect', () => {
             console.log('Connected to socket');
