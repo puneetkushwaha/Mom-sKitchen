@@ -173,6 +173,7 @@ const Checkout = () => {
             setCreatedOrder(order);
 
             if (paymentMode === 'UPI') {
+                setError('');
                 setShowUpiModal(true);
                 setLoading(false);
             } else if (paymentMode === 'Online') {
@@ -464,6 +465,7 @@ const Checkout = () => {
                                 value={transactionId}
                                 onChange={e => setTransactionId(e.target.value)}
                             />
+                            {error && <p className="text-red-500 text-sm font-bold text-center animate-pulse">{error}</p>}
                             <button
                                 onClick={handleVerifyUpi}
                                 className="w-full bg-black text-white py-4 rounded-xl font-bold mt-2"
